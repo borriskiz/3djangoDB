@@ -24,6 +24,7 @@
   <ItemGroup>
     <Compile Include="dbappdj2\admin.py" />
     <Compile Include="dbappdj2\apps.py" />
+    <Compile Include="dbappdj2\migrations\0001_initial.py" />
     <Compile Include="dbappdj2\migrations\__init__.py" />
     <Compile Include="dbappdj2\models.py" />
     <Compile Include="dbappdj2\tests.py" />
@@ -559,6 +560,7 @@
     <Folder Include="venv\Scripts\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="db.sqlite3" />
     <Content Include="venv\Lib\site-packages\pip-24.2.dist-info\AUTHORS.txt" />
     <Content Include="venv\Lib\site-packages\pip-24.2.dist-info\entry_points.txt" />
     <Content Include="venv\Lib\site-packages\pip-24.2.dist-info\INSTALLER" />

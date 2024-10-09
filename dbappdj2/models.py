@@ -4,6 +4,16 @@ from django.db import models
 
 class ItemType(models.Model):
     name = models.CharField(verbose_name="Type name", max_length=255)
+    BOUGHT_CHOICES = [
+        ("bought", "Bought"),
+        ("not_bought", "Not Bought"),
+    ]
+    is_bought = models.CharField(
+        verbose_name="Item Bought Status",
+        max_length=10,
+        choices=BOUGHT_CHOICES,
+        default="not_bought",
+    )
 
     class Meta:
         verbose_name = "Item Type"
@@ -20,7 +30,7 @@ class Material(models.Model):
         "Dealer", on_delete=models.SET_NULL, blank=True, null=True
     )
     price = models.IntegerField(verbose_name="Material price")
-    color = models.CharField(verbose_name="Material color", max_length=255)
+    color = models.CharField(verbose_name="Material color", max_length=255, blank=True)
 
     class Meta:
         verbose_name = "Material"
@@ -28,7 +38,7 @@ class Material(models.Model):
         ordering = ["name", "-price"]
 
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.color}"
 
 
 class Dealer(models.Model):
@@ -84,9 +94,8 @@ class Customer(models.Model):
 
 class HandmadeItem(models.Model):
     name = models.CharField(verbose_name="Item name", max_length=255)
-    date_receipt = models.DateField(
-        verbose_name="Date of receipt", blank=True, null=True
-    )
+
+    date_receipt = models.DateField(verbose_name="Date of receipt", blank=True)
     item_type = models.ForeignKey(
         ItemType,
         on_delete=models.SET_NULL,
@@ -123,3 +132,23 @@ class HandmadeItem(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.price}"
+
+
+class Profile(models.Model):
+    customer = models.OneToOneField(
+        Customer,
+        on_delete=models.CASCADE,
+        related_name="profile",
+        verbose_name="Customer Profile",
+    )
+    address = models.CharField(verbose_name="Address", max_length=255, blank=True)
+    date_of_birth = models.DateField(
+        verbose_name="Date of Birth", null=True, blank=True
+    )
+
+    class Meta:
+        verbose_name = "Profile"
+        verbose_name_plural = "Profiles"
+
+    def __str__(self):
+        return f"{self.customer.first_name}'s Profile"
