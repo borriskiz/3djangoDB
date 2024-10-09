@@ -11,6 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>3djangoDB</Name>
     <RootNamespace>3djangoDB</RootNamespace>
+    <InterpreterId>MSBuild|venv|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="dbappdj2\admin.py" />
+    <Compile Include="dbappdj2\apps.py" />
+    <Compile Include="dbappdj2\migrations\__init__.py" />
+    <Compile Include="dbappdj2\models.py" />
+    <Compile Include="dbappdj2\tests.py" />
+    <Compile Include="dbappdj2\views.py" />
+    <Compile Include="dbappdj2\__init__.py" />
     <Compile Include="django2\asgi.py" />
     <Compile Include="django2\settings.py" />
     <Compile Include="django2\urls.py" />
@@ -440,6 +448,8 @@
     <Compile Include="_3djangoDB.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="dbappdj2\" />
+    <Folder Include="dbappdj2\migrations\" />
     <Folder Include="django2\" />
     <Folder Include="venv\" />
     <Folder Include="venv\Include\" />
@@ -998,6 +1008,17 @@
     <Content Include="venv\Scripts\pip3.exe" />
     <Content Include="venv\Scripts\python.exe" />
     <Content Include="venv\Scripts\pythonw.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="venv\">
+      <Id>venv</Id>
+      <Version>0.0</Version>
+      <Description>venv (Python 3.12 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
