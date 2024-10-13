@@ -15,6 +15,7 @@ class ItemType(models.Model):
         default="not_bought",
     )
 
+
     class Meta:
         verbose_name = "Item Type"
         verbose_name_plural = "Item Types"
